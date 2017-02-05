@@ -1,0 +1,27 @@
+{
+  "name": "qunit-events",
+  "version": "0.0.1",
+  "description": "Event-driven feedback from the QUnit test runner",
+  "main": "index.js",
+  "scripts": {
+    "test": "testem ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mike-north/qunit-events.git"
+  },
+  "keywords": [
+    "qunit",
+    "testing"
+  ],
+  "author": "Mike North <michael.l.north@gmail.com> (https://mike.works)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mike-north/qunit-events/issues"
+  },
+  "homepage": "https://github.com/mike-north/qunit-events#readme",
+  "devDependencies": {
+    "qunitjs": "^2.1.1",
+    "testem": "^1.14.3"
+  }
+}

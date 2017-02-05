@@ -1,0 +1,21 @@
+{
+  "name": "qunit-events",
+  "description": "Event-driven feedback from the QUnit test runner",
+  "main": "index.js",
+  "authors": [
+    "Mike North <michael.l.north@gmail.com> (https://mike.works)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "qunit",
+    "testing"
+  ],
+  "homepage": "https://mike.works/oss/qunit-events",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "framework": "qunit",
+  "src_files": [
+    "index.js",
+    "test/*"
+  ],
+  "launch_in_dev": [
+    "Chrome"
+  ],
+  "launch_in_ci": [
+    "PhantomJS"
+  ]
+}
