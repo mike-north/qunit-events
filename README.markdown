@@ -16,7 +16,8 @@ You might have an iframe like this, inside which QUnit is running your tests
 ```html
 <iframe
 	src="http://localhost:4200/tests"
-  onload="frameLoad(event)" ></iframe>
+  onload="frameLoad(event)" >
+</iframe>
 ```
 
 And define your `frameLoad` function as follows
@@ -24,13 +25,13 @@ And define your `frameLoad` function as follows
 ```js
 function frameLoad(event) {
   var origin = "https://fiddle.jshell.net";
-	event.target.contentWindow.postMessage({
-	  eventName: 'setup', // required
-    instanceId: 'abc',  // required, any unique string
-    plugins: [{
-    	type: 'postmessage',
+  event.target.contentWindow.postMessage({
+      eventName: 'setup', // required
+      instanceId: 'abc',  // required, any unique string
+      plugins: [{
+      type: 'postmessage',
       origin: origin
-    }]
+      }]
   }, origin);
 }
 ```
