@@ -15,7 +15,7 @@ You might have an iframe like this, inside which QUnit is running your tests
 
 ```html
 <iframe
-	src="http://localhost:4200/tests"
+  src="http://localhost:4200/tests"
   onload="frameLoad(event)" >
 </iframe>
 ```
