@@ -24,7 +24,7 @@ And define your `frameLoad` function as follows
 
 ```js
 function frameLoad(event) {
-  var origin = "https://fiddle.jshell.net";
+  var origin = "http://localhost";
   event.target.contentWindow.postMessage({
       eventName: 'setup', // required
       instanceId: 'abc',  // required, any unique string
