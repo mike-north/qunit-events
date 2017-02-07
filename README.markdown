@@ -29,8 +29,8 @@ function frameLoad(event) {
       eventName: 'setup', // required
       instanceId: 'abc',  // required, any unique string
       plugins: [{
-      type: 'postmessage',
-      origin: origin
+        type: 'postmessage',
+        origin: origin
       }]
   }, origin);
 }
