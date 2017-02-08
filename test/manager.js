@@ -1,28 +1,28 @@
-(function () {
+(function() {
   var QUNIT_GLOBAL_SHIM = {
-    begin: function () { },
-    done: function () { },
-    moduleStart: function () { },
-    moduleDone: function () { },
-    testStart: function () { },
-    testDone: function () { }
+    begin: function() {},
+    done: function() {},
+    moduleStart: function() {},
+    moduleDone: function() {},
+    testStart: function() {},
+    testDone: function() {}
   };
 
   QUnit.module("EventsPluginManager");
 
-  QUnit.test("Wiring up to QUnit", function (assert) {
+  QUnit.test("Wiring up to QUnit", function(assert) {
     var invocations = { begin: 0, done: 0 };
     var shim = {
-      begin: function () {
+      begin: function() {
         invocations.begin++;
       },
-      done: function () {
+      done: function() {
         invocations.done++;
       },
-      moduleStart: function () { },
-      moduleDone: function () { },
-      testStart: function () { },
-      testDone: function () { }
+      moduleStart: function() {},
+      moduleDone: function() {},
+      testStart: function() {},
+      testDone: function() {}
     };
     new QUnit.EventsPluginManager(shim);
 
@@ -31,7 +31,7 @@
   });
 
 
-  QUnit.test("Plugin registration", function (assert) {
+  QUnit.test("Plugin registration", function(assert) {
     var manager = new QUnit.EventsPluginManager(QUNIT_GLOBAL_SHIM);
     var plugin = new QUnit.EventsPlugin();
 
@@ -44,7 +44,7 @@
   });
 
 
-  QUnit.test("Setup, start and end test suite", function (assert) {
+  QUnit.test("Setup, start and end test suite", function(assert) {
     var beginHook = null;
     var doneHook = null;
     var manager = new QUnit.EventsPluginManager({
@@ -54,10 +54,10 @@
       done: function(f) {
         doneHook = f;
       },
-      moduleStart: function () { },
-      moduleDone: function () { },
-      testStart: function () { },
-      testDone: function () { }
+      moduleStart: function() {},
+      moduleDone: function() {},
+      testStart: function() {},
+      testDone: function() {}
     });
 
     var uniqueId = "lj1h212erljh12rlkh";
@@ -90,7 +90,7 @@
     assert.equal(postMessagePayloads[0].instanceId, uniqueId, "unique ID is present in payload");
     doneHook({});
     assert.equal(postMessagePayloads.length, 2, "last postMessage for done hook");
-    window.postMessage = oldPostMessage;   
+    window.postMessage = oldPostMessage;
   });
 
 

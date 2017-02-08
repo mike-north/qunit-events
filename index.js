@@ -1,7 +1,7 @@
 /**
  * QUnit Events
  */
-(function () {
+(function() {
 
   ///================= PLUGIN =================///
   function QUnitEventPlugin(name) {
@@ -22,15 +22,15 @@
   function QUnitPostMessagePlugin(options) {
     if (!options.hostWindow) throw "PostMessagePlugin options must include a hostWindow";
     this._hostWindow = options.hostWindow;
-    this._origin = options.origin || window.location.protocol + "//" +  window.location.hostname;
+    this._origin = options.origin || window.location.protocol + "//" + window.location.hostname;
     this._sendEvent = function(eventName, evt) {
       this._hostWindow.postMessage(QUnit.extend(evt, {
         eventName: eventName
       }), this._origin);
-    };   
+    };
   }
   QUnitPostMessagePlugin.prototype = new QUnitEventPlugin("postmessage");
-  QUnitPostMessagePlugin.prototype.onSetup = function() { };
+  QUnitPostMessagePlugin.prototype.onSetup = function() {};
   QUnitPostMessagePlugin.prototype.onBegin = function(evt) {
     this._sendEvent("begin", evt);
   };
@@ -61,7 +61,7 @@
       fn.apply(plugin, args);
     }
 
-    this._callPluginHook = function (hookName) {
+    this._callPluginHook = function(hookName) {
       var args = Array.prototype.slice.call(arguments).splice(1, 1);
       if (args[0] && typeof args[0] === "object") {
         args[0].instanceId = this._id;
@@ -72,37 +72,33 @@
     };
 
     function receiveHook(eventName) {
-      return function (event) {
-      	this.receive(QUnit.extend(event, { eventName: eventName }));
+      return function(event) {
+        this.receive(QUnit.extend(event, { eventName: eventName }));
       }.bind(this);
     }
 
-    function onDone(event) {
-      this.receive(QUnit.extend(event, { eventName: "done" }));
-    }
-
     this._instantiatePlugins = function(plugins) {
-      for (var i =0; i < plugins.length; i ++) {
+      for (var i = 0; i < plugins.length; i++) {
         switch (plugins[i].type) {
-        case "postmessage":
-          this.registerPlugin(new QUnitPostMessagePlugin(plugins[i]));
-          break;
-        default:
-          throw "Unknown plugin type: " + plugins[i].type;
+          case "postmessage":
+            this.registerPlugin(new QUnitPostMessagePlugin(plugins[i]));
+            break;
+          default:
+            throw "Unknown plugin type: " + plugins[i].type;
         }
       }
     };
 
-    this._processSetup = function (event) {
+    this._processSetup = function(event) {
       if (typeof this._id !== "undefined") throw "QUnit event manager is already set up";
       if (!event.instanceId) throw "Setup event payload must contain an instanceId property";
       if (!event.plugins || typeof event.plugins.indexOf !== "function") throw "Setup event payload must contain a plugins array";
       this._instantiatePlugins(event.plugins);
       this._id = event.instanceId;
     };
-    
-        
-    
+
+
+
     function receiveMessage(event) {
       var plugins = (event.data.plugins || []);
       for (var i = 0; i < plugins.length; i++) {
@@ -126,43 +122,43 @@
 
   QUnitEventPluginManager.prototype = {};
 
-  QUnitEventPluginManager.prototype.registerPlugin = function (plugin) {
+  QUnitEventPluginManager.prototype.registerPlugin = function(plugin) {
     this._plugins.push(plugin);
     return plugin;
   };
 
-  QUnitEventPluginManager.prototype.unregisterPlugin = function (plugin) {
+  QUnitEventPluginManager.prototype.unregisterPlugin = function(plugin) {
     var idx = this._plugins.indexOf(plugin);
     this._plugins.splice(idx, 1);
   };
 
-  QUnitEventPluginManager.prototype.pluginCount = function () {
+  QUnitEventPluginManager.prototype.pluginCount = function() {
     return this._plugins.length;
   };
 
-  QUnitEventPluginManager.prototype.isReady = function () {
+  QUnitEventPluginManager.prototype.isReady = function() {
     return typeof this._id !== "undefined";
   };
 
-  QUnitEventPluginManager.prototype.receive = function (evt) {
+  QUnitEventPluginManager.prototype.receive = function(evt) {
     if (!evt) throw "Empty event payload";
     switch (evt.eventName) {
-    case "setup":
-      this._processSetup(evt);
-      this._callPluginHook(evt.eventName, evt);
-      break;
-    case "begin":
-    case "done":
-    case "moduleStart":
-    case "moduleDone":
-    case "testStart":
-    case "testDone":
-      if (this.isReady()) {
+      case "setup":
+        this._processSetup(evt);
         this._callPluginHook(evt.eventName, evt);
-      }
-      break;
-    default:
-      throw "Unknown event type " + evt.eventName;
+        break;
+      case "begin":
+      case "done":
+      case "moduleStart":
+      case "moduleDone":
+      case "testStart":
+      case "testDone":
+        if (this.isReady()) {
+          this._callPluginHook(evt.eventName, evt);
+        }
+        break;
+      default:
+        throw "Unknown event type " + evt.eventName;
     }
   };
 
