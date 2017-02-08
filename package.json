@@ -1,6 +1,6 @@
 {
   "name": "qunit-events",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Event-driven feedback from the QUnit test runner",
   "main": "index.js",
   "scripts": {
