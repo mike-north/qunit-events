@@ -106,7 +106,7 @@
           plugins[i].hostWindow = event.source;
         }
       }
-      if (typeof event.data === "object") {
+      if (typeof event.data === "object" && typeof event.data.eventType === "string") {
         this.receive(event.data);
       }
     }
