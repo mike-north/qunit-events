@@ -1,0 +1,113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/northm/.nvm/versions/node/v7.2.1/bin/node',
+1 verbose cli   '/Users/northm/.nvm/versions/node/v7.2.1/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v7.2.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/northm/Development/oss/qunit-events',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/northm/.npm/qunit-events/0.0.2/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/northm/.npm correctMkdir not in flight; initializing
+10 info lifecycle qunit-events@0.0.2~prepublish: qunit-events@0.0.2
+11 silly lifecycle qunit-events@0.0.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/northm/.npm/qunit-events/0.0.2/package.tgz',
+12 verbose tar pack   '/Users/northm/Development/oss/qunit-events' ]
+13 verbose tarball /Users/northm/.npm/qunit-events/0.0.2/package.tgz
+14 verbose folder /Users/northm/Development/oss/qunit-events
+15 verbose addLocalTarball adding from inside cache /Users/northm/.npm/qunit-events/0.0.2/package.tgz
+16 verbose correctMkdir /Users/northm/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd qunit-events@0.0.2
+18 verbose afterAdd /Users/northm/.npm/qunit-events/0.0.2/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/northm/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/northm/.npm/qunit-events/0.0.2/package/package.json written
+21 silly publish { name: 'qunit-events',
+21 silly publish   version: '0.0.2',
+21 silly publish   description: 'Event-driven feedback from the QUnit test runner',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'eslint index.js test/**/*.js && testem ci' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/mike-north/qunit-events.git' },
+21 silly publish   keywords: [ 'qunit', 'testing' ],
+21 silly publish   author:
+21 silly publish    { name: 'Mike North',
+21 silly publish      email: 'michael.l.north@gmail.com',
+21 silly publish      url: 'https://mike.works' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/mike-north/qunit-events/issues' },
+21 silly publish   homepage: 'https://github.com/mike-north/qunit-events#readme',
+21 silly publish   devDependencies: { eslint: '^3.15.0', qunitjs: '^2.1.1', testem: '^1.14.3' },
+21 silly publish   readme: '# QUnit Events [![Build Status](https://travis-ci.org/mike-north/qunit-events.svg?branch=master)](https://travis-ci.org/mike-north/qunit-events)\nA pluggable, event-driven extension to [QUnit](https://qunitjs.com)\n\n## Why might you want to use this?\nAnytime you want QUnit to communicate test results and status outside of the test runner’s frame. This might include:\n\n* Showing test results along side your application as you develop\n* Communicating test results to an instructor’s machine in a classroom setting\n* Agglomerating paralleled tests into a single status UI\n\n## How does this work\nYou’ll begin by providing the library with a configuration object. Right now this can only be done via postMessage into the test runner’s frame.\n\nYou might have an iframe like this, inside which QUnit is running your tests\n\n```html\n<iframe\n  src="http://localhost:4200/tests"\n  onload="frameLoad(event)" >\n</iframe>\n```\n\nAnd define your `frameLoad` function as follows\n\n```js\nfunction frameLoad(event) {\n  var origin = "http://localhost";\n  event.target.contentWindow.postMessage({\n      eventName: \'setup\', // required\n      instanceId: \'abc\',  // required, any unique string\n      plugins: [{\n        type: \'postmessage\',\n        origin: origin\n      }]\n  }, origin);\n}\n```\n\nSupport for additional features is in the works, including WebRTC and WebSocket support for classroom use.\n',
+21 silly publish   readmeFilename: 'README.markdown',
+21 silly publish   gitHead: 'd2eb239f4f67a2f60664bbd2c3606347c0b60af1',
+21 silly publish   _id: 'qunit-events@0.0.2',
+21 silly publish   _shasum: '973cca2714cefbdb709f8f568f567c9d19caae05',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name qunit-events
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.com/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'qunit-events',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'qunit-events',
+26 silly mapToRegistry   name: 'qunit-events',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.com/qunit-events
+28 verbose publish registryBase https://registry.npmjs.com/
+29 silly publish uploading /Users/northm/.npm/qunit-events/0.0.2/package.tgz
+30 verbose request uri https://registry.npmjs.com/qunit-events
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 1:06:26 AM
+33 verbose request using bearer token for auth
+34 verbose request id 1fa0aabc957a8340
+35 http request PUT https://registry.npmjs.com/qunit-events
+36 http 403 https://registry.npmjs.com/qunit-events
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Wed, 08 Feb 2017 09:05:06 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-sjc3126-SJC',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1486544706.148016,VS0,VE124',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/northm/.npm/registry.npmjs.com/qunit-events on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 0.0.2." : qunit-events
+40 verbose stack     at makeError (/Users/northm/.nvm/versions/node/v7.2.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/Users/northm/.nvm/versions/node/v7.2.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/Users/northm/.nvm/versions/node/v7.2.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/Users/northm/.nvm/versions/node/v7.2.1/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/Users/northm/.nvm/versions/node/v7.2.1/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/Users/northm/.nvm/versions/node/v7.2.1/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid qunit-events
+43 verbose cwd /Users/northm/Development/oss/qunit-events
+44 error Darwin 16.5.0
+45 error argv "/Users/northm/.nvm/versions/node/v7.2.1/bin/node" "/Users/northm/.nvm/versions/node/v7.2.1/bin/npm" "publish"
+46 error node v7.2.1
+47 error npm  v3.10.10
+48 error code E403
+49 error "You cannot publish over the previously published version 0.0.2." : qunit-events
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
