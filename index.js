@@ -1,7 +1,7 @@
 /**
  * QUnit Events
  */
-(function() {
+(function(w) {
 
   ///================= PLUGIN =================///
   function QUnitEventPlugin(name) {
@@ -163,12 +163,16 @@
   };
 
   ///============== SETUP QUNIT ===============///
-  if (!QUnit.events) {
-    var defaultManager = new QUnitEventPluginManager();
-    QUnit.extend(QUnit, {
-      EventsPluginManager: QUnitEventPluginManager,
-      EventsPlugin: QUnitEventPlugin,
-      events: defaultManager
-    });
+  function doSetup() {
+    if (!QUnit.events) {
+      var defaultManager = new QUnitEventPluginManager();
+      QUnit.extend(QUnit, {
+        EventsPluginManager: QUnitEventPluginManager,
+        EventsPlugin: QUnitEventPlugin,
+        events: defaultManager
+      });
+    }
   }
-}());
+  w.addEventListener("load", doSetup);
+
+}(window));
