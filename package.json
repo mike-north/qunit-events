@@ -1,10 +1,10 @@
 {
   "name": "qunit-events",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Event-driven feedback from the QUnit test runner",
   "main": "index.js",
   "scripts": {
-    "test": "eslint index.js test/**/*.js && testem ci"
+    "test": "eslint index.js client.js test/**/*.js && testem ci"
   },
   "repository": {
     "type": "git",
