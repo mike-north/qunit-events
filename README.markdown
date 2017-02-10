@@ -10,6 +10,8 @@ Anytime you want QUnit to communicate test results and status outside of the tes
 
 ## How does this work
 
+![How Qunit-Events Works](https://assets.mike.works/qunit-events-description.gif)
+
 There are two worlds we need to worry about:
 * *Test World* where qunit runs all of your tests
 * *App World* where we want to see the results of your tests
