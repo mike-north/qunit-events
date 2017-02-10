@@ -1,6 +1,7 @@
 /* eslint no-var:0, object-shorthand:0, prefer-template:0, max-statements-per-line:["error",{"max": 2}] */
 /* globals define:true */
 (function(w) {
+
   function handleEvent(event) {
     var evt = new Event("qunit-event");
     var frameId = event.data.instanceId;
@@ -23,7 +24,9 @@
   function doSetup() {
     w.addEventListener("message", receiveMessage, false);
   }
-  w.addEventListener("load", doSetup);
+  if (!document.getElementById("qunit-fixture")) {
+    w.addEventListener("load", doSetup);
+  }
 
   function defaultTestUrl() {
     var url = new URL(w.location.href);
@@ -174,10 +177,17 @@
 
   QUnitEventsClient.prototype = {
     setupTestFrame: function(container) {
-      this.ui.setupTestFrame(container);
+      this.containerElement = container || w.document.body;
+      var iframe = document.createElement("iframe");
+      iframe.src = this._testUrl;
+      iframe.onload = this._onFrameLoaded;
+      iframe.style = "position: absolute; left: 1px";
+      iframe.className = "qunit-events-frame qunit-events-frame-" + this._id;
+      iframe.addEventListener("qunit-event", this._handleEvent);
+      this.containerElement.appendChild(iframe);
     },
     registerChangeListener: function(listener) {
-      if (this._listeners.indexOf(listener) < 0) {
+      if (this._listeners.indexOf(listener) >= 0) {
         return;
       }
       this._listeners.push(listener);
