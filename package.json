@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/mike-north/qunit-events#readme",
   "devDependencies": {
-    "eslint": "^3.15.0",
+    "eslint": "^4.1.0",
     "qunitjs": "^2.1.1",
     "testem": "^1.14.3"
   }
