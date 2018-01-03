@@ -1,4 +1,6 @@
 # QUnit Events [![Build Status](https://travis-ci.org/mike-north/qunit-events.svg?branch=master)](https://travis-ci.org/mike-north/qunit-events)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/mike-north/qunit-events.svg)](https://greenkeeper.io/)
 A pluggable, event-driven extension to [QUnit](https://qunitjs.com)
 
 ## Why might you want to use this?
