@@ -23,6 +23,6 @@
   "devDependencies": {
     "eslint": "^4.14.0",
     "qunitjs": "^2.1.1",
-    "testem": "^1.14.3"
+    "testem": "^2.7.2"
   }
 }
